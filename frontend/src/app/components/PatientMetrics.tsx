@@ -1,8 +1,8 @@
 // src/components/PatientMetrics.tsx
-import { PatientsProps } from "../services/getAllPatients";
+import { PatientProps } from "../services/getAllPatients";
 
 interface PatientMetricsComponentProps {
-  selectedPatient: PatientsProps | null;
+  selectedPatient: PatientProps | null;
 }
 
 const PatientMetrics: React.FC<PatientMetricsComponentProps> = ({ selectedPatient }) => {

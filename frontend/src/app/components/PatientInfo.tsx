@@ -10,6 +10,7 @@ const PatientInfo: React.FC<PatientInfoComponentProps> = ({ selectedPatient }) =
   }
 
   return (
+    
     <div>
       <h2>Informações do Paciente</h2>
       <p>Nome: {selectedPatient.name}</p>

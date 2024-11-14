@@ -2,18 +2,16 @@
 
 import { useEffect, useState } from "react";
 import PatientMetrics from "./components/PatientMetrics";
-import { getAllPatients, PatientsProps } from "./services/getAllPatients";
-import { PatientInfoProps } from "./types/patient";
+import { getAllPatients, PatientProps } from "./services/getAllPatients";
 import PatientInfo from "./components/PatientInfo";
 
 export default function Home() {
-  const [patients, setPatients] = useState<PatientInfoProps[]>([]);
-  const [selectedPatient, setSelectedPatient] = useState<PatientsProps | null>(null);
-  const [patientsMetrics, setPatientsMetrics] = useState<PatientsProps[] | null>(null);
+  const [patients, setPatients] = useState<PatientProps[]>([]);
+  const [selectedPatient, setSelectedPatient] = useState<PatientProps | null>(null);
 
   const handleSelectPatient = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const patientId = Number(event.target.value);
-    const patient = patientsMetrics?.find((p) => p.patient.id === patientId) || null;
+    const patient = patients.find((p) => p.id === patientId) || null;
     setSelectedPatient(patient);
   };
 
@@ -21,9 +19,7 @@ export default function Home() {
     const fetchPatients = async () => {
       try {
         const patientsData = await getAllPatients();
-        setPatientsMetrics(patientsData);
- 
-        setPatients(patientsData.map((p) => p.patient));
+        setPatients(patientsData);  // Use o JSON diretamente como o estado `patients`
       } catch (error) {
         console.log("Erro ao carregar os dados dos pacientes.");
       }
@@ -44,7 +40,7 @@ export default function Home() {
       </select>
       {selectedPatient && (
         <>
-          <PatientInfo selectedPatient={selectedPatient.patient} />
+          <PatientInfo selectedPatient={selectedPatient} />
           <PatientMetrics selectedPatient={selectedPatient} />
         </>
       )}
