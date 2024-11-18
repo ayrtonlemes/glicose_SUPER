@@ -13,7 +13,7 @@ export interface PatientInfoProps {
 
 export interface HeartValueProps {
     id: number,
-    idPacient: number,
+    idPatient: number,
     date: string[],
     time: string[],
     SDNN: number[],
@@ -31,3 +31,28 @@ interface HeartValueFreqProps {
     LF_HF_Peak:number[],
     LF_HF: number[]
 }
+
+export interface FoodLogProps {
+    id: number,
+    idPatient: number,
+    date: string[],
+    timeBegin: string[]
+    timeEnd: string[],
+    loggedFood: string[],
+    calories: string[],
+    carbo: string[],
+    sugar: string[],
+    protein: string[],
+}
+
+export interface SensorsProps{
+    id: number,
+    idPatient: number,
+    date: string[],
+    time: string[],
+    eda: number[],
+    glicoseDex: number[],
+    skinTemperature: number[],
+    HR: number[],
+}
+
