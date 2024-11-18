@@ -24,36 +24,19 @@ export default function Navbar() {
   const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
   
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-    const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
   
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
       setAnchorElNav(event.currentTarget);
-    };
-    const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-      setAnchorElUser(event.currentTarget);
     };
   
     const handleCloseNavMenu = () => {
       setAnchorElNav(null);
     };
   
-    const handleCloseUserMenu = () => {
-      setAnchorElUser(null);
-    };
-  
     return (
       <AppBar position="static">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
 
             <Typography
               variant="h6"

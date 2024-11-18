@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.get('/patients', (req: Request, res: Response)=> {
     try{
-        const dataPath = path.join(__dirname, '', 'patients.json');
+        const dataPath = path.join(__dirname, '', 'patientsbd.json');
         const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'))
         res.json(data);
     }catch(error) {

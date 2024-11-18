@@ -1,5 +1,6 @@
 // src/components/PatientMetrics.tsx
-import { PatientProps } from "../services/getAllPatients";
+import { Box, Container, Typography } from "@mui/material";
+import { PatientProps } from "../services/getPatients";
 
 interface PatientMetricsComponentProps {
   selectedPatient: PatientProps | null;
@@ -11,12 +12,14 @@ const PatientMetrics: React.FC<PatientMetricsComponentProps> = ({ selectedPatien
   }
 
   return (
-    <div>
-      <h2>Métricas do Paciente</h2>
-      <p>Frequência Cardíaca: {selectedPatient.metrics.heartRate}</p>
-      <p>Pressão Arterial: {selectedPatient.metrics.bloodPressure}</p>
-      <p>Saturação de Oxigênio: {selectedPatient.metrics.oxygenSaturation}</p>
-    </div>
+    <Container>
+      <Box>
+        <Typography variant="h3">Métricas do Paciente</Typography>
+        <p>Frequência Cardíaca: {selectedPatient.metrics.heartRate}</p>
+        <p>Pressão Arterial: {selectedPatient.metrics.bloodPressure}</p>
+        <p>Saturação de Oxigênio: {selectedPatient.metrics.oxygenSaturation}</p>
+      </Box>
+    </Container>
   );
 };
 
