@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.get('/patients', (req: Request, res: Response)=> {
     try{
-        const dataPath = path.join(__dirname, '', 'patients.json');
+        const dataPath = path.join(__dirname, '', 'patientsbd.json');
         const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'))
         res.json(data);
     }catch(error) {
@@ -22,6 +22,35 @@ app.get('/patients', (req: Request, res: Response)=> {
         res.status(500).json({message: "Erro ao carregar dados dos pacientes"})
     }
 })
+
+app.get('/patients/:id', (req: Request, res: Response):void  => {
+    try {
+        const patientId = parseInt(req.params.id);
+
+        const dataPath = path.join(__dirname, '', 'patientsbd.json');
+        const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+
+        const patient = data.patient.find((p: any) => p.id_patient === patientId);
+        const patientData = data.patient_data.filter((pd: any) => pd.id_patient === patientId);
+        const foodLog = data.food_log.filter((fl: any) => fl.id_patient === patientId);
+        const sensors = data.sensors.filter((s: any) => s.id_patient === patientId);
+
+        if (!patient) {
+            res.status(404).json({ message: "Paciente não encontrado" });
+            return;
+        }
+
+        res.json({
+            patient,
+            patient_data: patientData,
+            food_log: foodLog,
+            sensors
+        });
+    } catch (error) {
+        console.log("Erro ao buscar informações do paciente: ", error);
+        res.status(500).json({ message: "Erro ao buscar informações do paciente" });
+    }
+});
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);

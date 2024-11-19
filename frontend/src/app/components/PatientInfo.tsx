@@ -1,3 +1,4 @@
+import { Box, Container, Typography } from "@mui/material";
 import { PatientInfoProps } from "../types/patient";
 
 interface PatientInfoComponentProps {
@@ -6,17 +7,22 @@ interface PatientInfoComponentProps {
 
 const PatientInfo: React.FC<PatientInfoComponentProps> = ({ selectedPatient }) => {
   if (!selectedPatient) {
-    return <div>Selecione um paciente para ver as informações</div>;
+    return <Container>
+      <Box>
+        <Typography>Selecione um paciente para continuar.</Typography>
+      </Box>
+    </Container>
   }
 
   return (
-    
-    <div>
-      <h2>Informações do Paciente</h2>
-      <p>Nome: {selectedPatient.name}</p>
-      <p>Idade: {selectedPatient.age}</p>
-      <p>Gênero: {selectedPatient.gender}</p>
-    </div>
+    <Container>
+      <Box>
+        <Typography variant="h3">Informações do paciente:</Typography>
+        <p>Nome: {selectedPatient.name}</p>
+        <p>Idade: {selectedPatient.age}</p>
+        <p>Gênero: {selectedPatient.gender}</p>
+      </Box>
+    </Container>
   );
 };
 
