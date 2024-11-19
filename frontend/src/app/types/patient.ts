@@ -5,7 +5,7 @@ export interface MedicalValuesProps {
 }
 
 export interface PatientInfoProps {
-    id: number,
+    id_patient: number,
     name: string,
     age: number,
     gender: string,
