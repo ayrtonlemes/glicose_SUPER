@@ -4,12 +4,12 @@
         "id_patient": 1,
         "name": "João Silva",
         "age": 34,
-        "gender": "M"
+        "gender": "Masculino"
       }, {
         "id_patient":2,
         "name": "Jose Lucas",
         "age":32,
-        "gender": "M"
+        "gender": "Masculino"
       }
     ],
     "patient_data": [
@@ -66,7 +66,7 @@
         "time_begin": ["07:30", "07:45", "08:00", "08:15", "08:30"],
         "time_end": ["07:50", "08:10", "08:20", "08:35", "08:50"],
         "logged_food": ["Café da manhã", "Lanche", "Almoço", "Lanche da tarde", "Jantar"],
-        "calorie": [250, 150, 700, 200, 600],
+        "calories": [250, 150, 700, 200, 600],
         "carbo": [30, 20, 90, 25, 80],
         "sugar": [10, 8, 15, 12, 20],
         "protein": [5, 3, 25, 4, 30]

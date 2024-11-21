@@ -20,11 +20,11 @@ export const getPatientById = async (id: string) => {
         const data = await response.json();
     
         if(!data || !data.patient || !data.patient_data || !data.food_log || !data.sensors) {
-          throw new Error("formato inesperado da resposta da API.");
+          throw new Error("Formato inesperado da resposta da API.");
         }
         const patient = data.patient.id_patient === pid ? data.patient : null
         if(!patient) {
-          console.log("nao encontramos esse paciente com esse id:", pid, "aa", id)
+          console.log("Nao encontramos esse paciente com esse id:", pid, "aa", id)
         }
         return {
             patient: data.patient.id_patient === pid ? data.patient : null,
