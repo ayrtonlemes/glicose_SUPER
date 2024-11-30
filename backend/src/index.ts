@@ -3,6 +3,7 @@ import patients from "./patients.json"
 import fs from "fs"
 import path from "path";
 import cors from "cors"
+
 const app = express()
 const PORT = process.env.PORT || 5000 //criar a porta em um arquivo env
 
@@ -51,6 +52,25 @@ app.get('/patients/:id', (req: Request, res: Response):void  => {
         res.status(500).json({ message: "Erro ao buscar informações do paciente" });
     }
 });
+
+app.get("/food_logs/:id_patient", (req: Request, res: Response):void => {
+    
+    const idPatient = parseInt(req.params.id_patient); 
+    if (isNaN(idPatient)) {
+      res.status(400).json({ error: "id_patient deve ser um número" });
+    }
+  
+    const dataPath = path.join(__dirname, '', 'patientsbd.json');
+    const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+
+    const foodLogs = data.food_log.filter((log) => log.id_patient === idPatient);
+  
+    if (foodLogs.length === 0) {
+      res.status(404).json({ message: "Nenhum food_log encontrado para este paciente." });
+    }
+  
+    res.status(200).json({food_logs: foodLogs });
+  });
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);

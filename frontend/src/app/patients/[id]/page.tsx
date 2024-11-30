@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Box, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from "@mui/material";
 import { getPatientById, PatientData } from "../../services/getPatientById";
 import { usePathname } from "next/navigation";
+import CaloriesGraphBar from "@/app/components/CaloriesGraph";
 
 const PatientDetails = () => {
   const [patientData, setPatientData] = useState<PatientData | null>(null);
@@ -112,7 +113,9 @@ const PatientDetails = () => {
           </TableBody>
         </Table>
       </TableContainer>
-
+      <CaloriesGraphBar>
+        
+      </CaloriesGraphBar>
       <TableContainer component={Paper}>
         <Typography variant="h6" gutterBottom>
           Dados dos Sensores
